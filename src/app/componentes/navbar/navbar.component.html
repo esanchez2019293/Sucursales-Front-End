@@ -15,11 +15,12 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-									<div class="dropdown-menu">
-										<a class="nav-link" routerLink='/login' routerLinkActive="active">Login</a>
-
-									</div>
+                  <a class="nav-link" routerLink='/login' routerLinkActive="active">Login</a>	<br><div class="dropdown-menu">
+                    <a class="nav-link" routerLink='/inicio' routerLinkActive="active">Inicio</a> <br>
+                    <a class="nav-link" routerLink='/sucursal' routerLinkActive="active">Sucursales</a>
+                    <a class="nav-link" routerLink='/producto' routerLinkActive="active">Productos</a> <br>
+                    <a class="nav-link" routerLink='/login' routerLinkActive="active" (click)="logout()">LogOut</a>
+                  </div>
 								</li> <br>
 							</ul>
 						</div>
@@ -29,33 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="section full-height">
-		<div class="absolute-center">
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-				<h1><span>B</span><span>i</span><span>e</span><span>n</span><span>v</span><span>e</span><span>n</span><span>i</span><span>d</span><span>o</span><br>
-				<span>a</span>&nbsp;
-				<span>M</span><span>C</span></h1>
 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section mt-5">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div id="switch">
-								<div id="circle"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="my-5 py-5">
 	</div>
 
