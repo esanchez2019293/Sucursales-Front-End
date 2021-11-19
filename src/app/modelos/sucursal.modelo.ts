@@ -3,7 +3,7 @@ export class Sucursal{
     public _id: String,
     public nombre: String,
     public direccion: String,
-    public telefono: Number,
+    public telefono: String,
     public sucursalEmpresa: String
   )
   {}

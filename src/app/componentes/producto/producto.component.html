@@ -1,1 +1,223 @@
-<p>producto works!</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
+
+  </head>
+  <body>
+
+<main>
+
+
+  <div class="b-example-divider"></div>
+
+  <div>
+  <h1 class="diferent">TODOS LOS PRODUCTOS</h1>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+        <i class="bi bi-plus-square">Agregar Producto</i>
+      </button>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="h5">Escoja como desea ordenar el stock de los productos</h5>
+    </div>
+  </a>
+  <a class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between" (click)="ordenarAscendente()">
+      <h5 class="h52">Ordenar por Menor a Mayor cantidad de existencia</h5>
+    </div>
+     </a>
+
+     <a class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between" (click)="ordenarDescendente()">
+        <h5 class="h52">Ordenar por Mayor a Menor cantidad de existencia</h5>
+      </div>
+       </a>
+</div>
+
+<br>
+
+
+  <h5 class="pal2">Buscar Producto Por:</h5>
+
+
+  <div>
+    <form class="form">
+      <input class="buscar" [(ngModel)]="buscarProductoNombre" type="search" name="buscarProductoNombre" placeholder="Nombre Producto" autocomplete="off">
+      <input class="buscar" [(ngModel)]="buscarProductoProveedor" type="search" name="buscarProductoProveedor" placeholder="Nombre Proveedor" autocomplete="off">
+    </form>
+  </div>
+
+
+<div *ngFor="let prod of productosList | productoNombre: buscarProductoNombre | productoProveedor: buscarProductoProveedor">
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">{{prod.nombreProducto}}</h1>
+    <h5 class="pal">Nombre Proveedor: {{prod.nombreProveedor}}</h5>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"></p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-success btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalVer"
+        (click)="obtenerProductoID(prod._id)">Ver Producto</button>
+        <button type="button" class="btn btn-info btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalEditar"
+        (click)="obtenerProductoID(prod._id)">Editar Producto</button>
+        <button type="button" class="btn btn-warning btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalEliminar"
+        (click)="obtenerProductoID(prod._id)">Eliminar Producto</button>
+        <button type="button" class="btn btn-secondary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#modalEnviar"
+        >Enviar a Sucursal</button>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+    </div>
+  </div>
+</div>
+
+  <div class="b-example-divider mb-0"></div>
+</main>
+
+  </body>
+</html>
+
+
+<!--Modal Agregar Producto-->
+<div class="modal" id="modalAgregarProducto" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="productoModel.nombreProducto">
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Nombre Proveedor</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="productoModel.nombreProveedor">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoModel.stock">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AgregarProducto()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Ver Producto-->
+<div class="modal" id="modalVer" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ver Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="productoModel.nombreProducto" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Nombre Proveedor</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="productoModel.nombreProveedor" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoModel.stock" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Producto-->
+<div class="modal" id="modalEditar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="productoModel.nombreProducto">
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Nombre Proveedor</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="productoModel.nombreProveedor">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoModel.stock">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editarProducto()">Editar</button>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!--Modal Eliminar Producto-->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de eliminar el Producto: {{ productoModel.nombreProducto }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="eliminarProducto(productoModel._id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

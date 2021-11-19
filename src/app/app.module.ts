@@ -15,7 +15,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { ProductoComponent } from './componentes/producto/producto.component';
-import { SucursalComponent } from './componentes/sucursal/sucursal.component'
+import { SucursalComponent } from './componentes/sucursal/sucursal.component';
+import { ProductoNombrePipe } from './pipes/producto-nombre.pipe';
+import { ProductoProveedorPipe } from './pipes/producto-proveedor.pipe';
+import { SucursalNombrePipe } from './pipes/sucursal-nombre.pipe'
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { SucursalComponent } from './componentes/sucursal/sucursal.component'
     LoginComponent,
     InicioComponent,
     ProductoComponent,
-    SucursalComponent
+    SucursalComponent,
+    ProductoNombrePipe,
+    ProductoProveedorPipe,
+    SucursalNombrePipe
   ],
   imports: [
     BrowserModule,

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           title: '!OK!',
           text: 'Binvenido a la application ' + [this.empresaModel.usuario]
         })
-          this._router.navigate(['/Inicio'])
+          this._router.navigate(['/inicio'])
       },
         error => {
           Swal.fire ({

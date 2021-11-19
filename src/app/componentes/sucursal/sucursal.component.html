@@ -1,1 +1,196 @@
-<p>sucursal works!</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
+
+  </head>
+  <body class="body">
+
+<main>
+
+  <div class="b-example-divider"></div>
+
+  <div>
+    <h1 class="h1diferent">Sucursales Registradas</h1>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <div class="d-grid gap-2 d-md-block">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal">
+          <i class="bi bi-plus-square">Agregar Sucursal</i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+
+  <h5 class="pal2">Buscar Sucursal Por:</h5>
+
+  <div>
+    <form class="form">
+      <input class="buscar" [(ngModel)]="buscarSucursalNombre" type="search" name="buscarSucursalNombre" placeholder="Sucursal nombre" autocomplete="off">
+     <!---<input [(ngModel)]="buscarPalabra" type="search" name="buscarpalabra" placeholder="Palabra Clave" autocomplete="off">
+    -->
+    </form>
+  </div>
+
+  <div class="container my-5" *ngFor="let suc of sucursalesList | sucursalNombre: buscarSucursalNombre">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1" class="h1titulos">{{suc.nombre}}</h1>
+        <h1 class="display-4 fw-bold lh-1" class="h1pal">Direccion {{suc.direccion}}</h1>
+        <h1 class="display-4 fw-bold lh-1" class="h1pal">Telefono {{suc.telefono}}</h1>
+      </div>
+      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalVerSucursal"
+        (click)="ObtenerSucursalesID(suc._id)">Ver</button> ||
+        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalEditarSucursal"
+        (click)="ObtenerSucursalesID(suc._id)">Editar</button> ||
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarSucursal"
+        (click)="ObtenerSucursalesID(suc._id)">Eliminar</button>
+    </div>
+    <br>
+    </div>
+  </div>
+</main>
+
+
+  </body>
+</html>
+
+<!--Modal Agregar Sucursal-->
+<div class="modal" id="modalAgregarSucursal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="sucursalModel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Direccion Sucursal</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="sucursalModel.direccion">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Telefono Sucursal</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="sucursalModel.telefono">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AgregarSucursal()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Ver Sucursal-->
+<div class="modal" id="modalVerSucursal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ver Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="sucursalModel.nombre" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Direccion Sucursal</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="sucursalModel.direccion" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Telefono Sucursal</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="sucursalModel.telefono" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Sucursal-->
+<div class="modal" id="modalEditarSucursal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="sucursalModel.nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Direccion Sucursal</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="sucursalModel.direccion">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Telefono Sucursal</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="sucursalModel.telefono">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EditarSucursal()">Editar</button>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!--Modal Eliminar Sucursal-->
+<div class="modal fade" id="modalEliminarSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de eliminar la sucursal: {{ sucursalModel.nombre }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="EliminarSucursal(sucursalModel._id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,97 @@
+.body{
+  background-image: url(https://fondosmil.com/fondo/1095.jpg);
+}
+
+.h1diferent{
+  color:coral;
+  margin: 0px 560px;
+}
+
+.h1titulos{
+  color:rgb(106, 179, 243);
+  margin:0px 200px;
+  font-size: 50px;
+}
+
+.pal2{
+  font-size: 25px;
+  color:rgb(122, 215, 243);
+  margin:0px 45%;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.btn{
+  font-size:20px;
+  color:rgb(255, 255, 255);
+}
+
+.btn-outline-info{
+  font-size:20px;
+  color:rgb(255, 255, 255);
+}
+
+.btn-outline-primary{
+  margin: 0px 570px;
+}
+
+.btn-outline-success{
+  color: rgb(0, 0, 0);
+}
+
+.btn-outline-warning{
+  color: rgb(255, 255, 255);
+}
+
+.btn-outline-dark{
+  color: rgb(18, 134, 24);
+}
+
+.form-label{
+  color:darkcyan
+}
+
+.modal-title{
+  color:tomato
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input {
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem;
+}
+
+.form button {
+  padding: 0.5em 1em;
+  border: none;
+  background: rgb(100, 200, 255);
+  cursor: pointer;
+}
+
+.h1pal{
+  color:aqua;
+  font-size: 25px;
+  margin: 0px 25%;
+}
