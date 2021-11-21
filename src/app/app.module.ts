@@ -18,7 +18,8 @@ import { ProductoComponent } from './componentes/producto/producto.component';
 import { SucursalComponent } from './componentes/sucursal/sucursal.component';
 import { ProductoNombrePipe } from './pipes/producto-nombre.pipe';
 import { ProductoProveedorPipe } from './pipes/producto-proveedor.pipe';
-import { SucursalNombrePipe } from './pipes/sucursal-nombre.pipe'
+import { SucursalNombrePipe } from './pipes/sucursal-nombre.pipe';
+import { ProductoSucursalComponent } from './componentes/producto-sucursal/producto-sucursal.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SucursalNombrePipe } from './pipes/sucursal-nombre.pipe'
     SucursalComponent,
     ProductoNombrePipe,
     ProductoProveedorPipe,
-    SucursalNombrePipe
+    SucursalNombrePipe,
+    ProductoSucursalComponent
   ],
   imports: [
     BrowserModule,

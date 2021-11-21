@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<h1 class="demo-title">Productos de Sucursal</h1>
+
+<div class="row">
+  <div class="col">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal">
+        <i class="bi bi-plus-square">Agregar Producto a Sucursal</i>
+      </button>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="pricing-table" *ngFor="let prodSuc of productoSucursalesList">
+    <div class="pricing-option">
+        <h1>{{prodSuc.nombreProductoSucursal}}</h1>
+        <hr />
+        <hr />
+        <div class="price">
+            <div class="front">
+                <span class="price">Stock: {{prodSuc.stockSucursal}}</span>
+                <span class="price">Cantidad Vendida: {{prodSuc.cantidadVendida}}</span>
+                <span class="price">{{prodSuc.sucursalProducto}}</span>
+              </div>
+            <div class="back">
+                <a class="button" data-bs-toggle="modal" data-bs-target="#modalComprarProducto"
+                (click)="ObtenerProductoSucursalID(prodSuc._id)">Comprar Producto</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+
+<!--Modal Agregar Sucursal-->
+<div class="modal" id="modalAgregarSucursal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="productoSucursalesModel.nombreProductoSucursal">
+          </div>
+          <div class="mb-3">
+            <label for="inputProveedor" class="form-label">Stock Sucursal</label>
+            <input type="text" class="form-control" id="inputProveedor" name="proveedor" #proveedor="ngModel"
+            [(ngModel)]="productoSucursalesModel.stockSucursal">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Cantidad Vendida Sucursal</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoSucursalesModel.cantidadVendida">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Nombre de Sucursal</label>
+            <input type="text" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoSucursalesModel.sucursalProducto">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AgregarProductoSucursal()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Agregar Producto Sucursal-->
+<div class="modal" id="modalAgregarSucursal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="productoSucursalesModel.nombreProductoSucursal">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AgregarProductoSucursal()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Vender Producto-->
+<div class="modal fade" id="modalComprarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Vender Producto de Sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputVendido" class="form-label">Ingrese Un numero a comprar</label>
+            <input type="text" class="form-control" id="inputVendido" name="vendido" #vendido="ngModel"
+            [(ngModel)]="productoSucursalesModel.cantidadVendida">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal"
+        (click)="VenderProducto()">Vender</button>
+      </div>
+    </div>
+  </div>
+</div>

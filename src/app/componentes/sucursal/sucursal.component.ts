@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-sucursal',
   templateUrl: './sucursal.component.html',
-  styleUrls: ['./sucursal.component.css']
+  styleUrls: ['./sucursal.component.css'],
+  providers: [SucursalService]
 })
 export class SucursalComponent implements OnInit {
 
